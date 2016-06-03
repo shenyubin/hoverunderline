@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+
+		<!--尝试用去缓存方法，不能解决问题
+			<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Cache-Control" content="no-cache,must-revalidate" />
+		<meta http-equiv="expires" content="0" />-->
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+				text-decoration: none;
+			}
+			
+			#Onhover {
+				width: 100px;
+				height: 70px;
+				border: 1px;
+				background-repeat: no-repeat;
+				background-size: contain;
+			}
+			
+			.Onhover {
+				background: url(img/underline.gif) no-repeat;
+				/*background-size: cover;*/
+				background-size: contain;
+			}
+			
+			.link1 {
+				color: black;
+				text-align: center;
+				padding: 10px;
+				display: block;
+				margin: auto;
+			}
+		</style>
+		
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript">
+		$(document).ready(function(){
+//使用添加class的方法会出现加载好后再次放上去会直接出现而不是重头播放，应该需要去除缓存，还待了解
+//			$("#Onhover").hover(
+//				function() {
+//					$(this).addClass('Onhover')
+//				},
+//				function() {
+//					$(this).removeClass('Onhover')
+//				}
+//			)
+           
+            $("#Onhover").hover(
+				function() {
+					$(this).css("background-image","url(img/underline.gif)")
+				},
+				function() {
+					$(this).css("background-image","none")
+					window.location.reload();
+				}
+			)
+		});
+		</script>
+		<!--<script type="text/javascript">
+		//尝试用修改class的方法，没有完成
+		window.onload=function(){
+			var Oh=document.getElementById("onhover");
+			var L1=document.getElementById("link1");
+			
+			L1.onmouseleave=function(){
+				Oh.className="onhover";
+			}
+			L1.onmouseover=function(){
+				Oh.className=" ";
+			}
+		}
+	</script>-->
+	</head>
+
+	<body>
+		<div id="Onhover">
+			<a id="link1" class="link1" href="#">首页</a>
+		</div>
+	</body>
+
+</html>
